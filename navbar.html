@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<style>
+      :root {
+            --very-light-pink: #c7c7c7;
+            --text-input-field: #f7f7f7;
+            --hospital-green: #ACD9B2;            
+            --white: #FFFFFF;
+            --black: #000000;
+            --sm: 14px;
+            --md: 15px;
+            --lg: 18px;
+        }
+        body{            
+        margin: 0;
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 700;
+        }
+        @media (min-width: 640px) {
+        .menu{
+                display: none;
+            }
+        
+        }
+        @media(max-width: 640px){
+            .navbar-left ul{
+            display: none !important;
+        }
+        }
+        .menu{
+            padding: 12px;
+        }
+        .logo{
+            width: 100px;
+        }
+        .navbar-left ul, .navbar-right ul{
+            list-style: none;
+            padding: 0;
+            margin-top: 24px;
+            align-items: center;
+            display: flex;            
+            margin: 0; 
+        }
+        .navbar-left, .navbar-right{
+           display: flex;
+           margin-left: 20px;
+        }       
+        .navbar-left ul{
+            margin-left: 20px;
+        }
+        .navbar-right ul{
+            margin-left: 20px;
+            height: 60px;
+            margin-right: 20px;
+        }
+        .navbar-left ul li a {
+            text-decoration: none;
+            color: var(--very-light-pink);
+            border: 1px solid var(--white);
+            padding: 8px;
+            border-radius: 8px;
+        }
+        .navbar-left ul li a:hover {
+            
+            border: 1px solid var(--hospital-green);
+            color: var(--hospital-green);
+        }     
+        .navbar{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--very-light-pink);
+        }
+        .navbar-img{
+            color: var(--very-light-pink);
+            font-size: var(--sm);
+        }
+        .navbar-shopping-cart div{
+            background-color: var(--hospital-green);
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            font-size: var(--sm);
+            font-weight: bold;
+            position: absolute;
+            top: 6px;
+            right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+</style>
+<body>
+    <nav class="navbar">
+        <img class="menu" src="./icons/icon_menu.svg" alt="manu">
+        <div class="navbar-left">
+            <img class="logo" src="./logos/logo_yard_sale.svg" alt="logo">
+            <ul>
+                <li>
+                    <a href="/">All</a>
+                </li>
+                <li>
+                    <a href="/">Dogs</a>
+                </li>
+                <li>
+                    <a href="/">Cats</a>
+                </li>
+                <li>
+                    <a href="/">Birds</a>
+                </li>
+                <li>
+                    <a href="/">Snakes</a>
+                </li>
+                <li>
+                    <a href="/">Spiders</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <ul>
+                <li class="navbar-img">josueperez723@gmail.com</li>
+                <li class="navbar-shopping-cart">
+                    <img src="./icons/icon_shopping_cart.svg" alt="shopping-cart">
+                    <div>3</div>
+                </li>
+            </ul>
+        </div>
+
+
+    </nav>
+</body>
+</html>
