@@ -5,6 +5,8 @@ const menuHamIcon = document.querySelector('.menu');
 const menuIconoCarrito = document.querySelector('.navbar-shopping-cart')
 const menuCarrito = document.querySelector('.my-order-container')
 const cardsContainer =  document.querySelector('.cards-container')
+const productDetailContainer = document.querySelector('#product-detail')
+const productDetailCLose = document.querySelector('.close')
 
 navEmail.addEventListener('click', toggleDesktopMenu)
 menuHamIcon.addEventListener('click', toogleMobileMenu)
@@ -31,12 +33,14 @@ function toggleDesktopMenu(){
 function toogleMobileMenu(){
     const isMenuCarritoClose = menuCarrito.classList.contains('inactive')
     const isMenuMobileClose =  mobileMenu.classList.contains('inactive')
+    const isProductDetailClose = productDetailContainer.classList.contains('inactive')
 
     if (isMenuMobileClose){
         
-        if(isMenuCarritoClose){
+        if(isMenuCarritoClose && isProductDetailClose){
             mobileMenu.classList.remove('inactive')
         }else{
+            productDetailContainer.classList.add('inactive')
             menuCarrito.classList.add('inactive')
             mobileMenu.classList.remove('inactive')
         }
@@ -50,12 +54,14 @@ function toogleMenuCarrito()
     const isDesktopMenuClose = desktopMenu.classList.contains('inactive')
     const isMenuCarritoClose = menuCarrito.classList.contains('inactive')
     const isMenuMobileClose =  mobileMenu.classList.contains('inactive')
-    
+    const isProductDetailClose = productDetailContainer.classList.contains('inactive')
+
     if(isMenuCarritoClose){
-        if(isDesktopMenuClose && isMenuMobileClose){
+        if(isDesktopMenuClose && isMenuMobileClose && isProductDetailClose){
             menuCarrito.classList.remove('inactive')      
         }else
-        {       
+        {   
+            productDetailContainer.classList.add('inactive')   
             desktopMenu.classList.add('inactive')   
             mobileMenu.classList.add('inactive') 
             menuCarrito.classList.remove('inactive')
@@ -67,9 +73,11 @@ function toogleMenuCarrito()
     }
 }
 
+
+
 const productList = [];
 productList.push({
-    name: 'Gata Poodle Adulta Embadazada',
+    name: 'Gata  Embadazada',
     price: 120,
     image: 'https://static.onecms.io/wp-content/uploads/sites/47/2020/08/13/pregnant-cat-1165219581-2000.jpg'
 })
@@ -89,7 +97,25 @@ productList.push({
     image: 'http://estaticos.elmundo.es/assets/multimedia/imagenes/2016/05/27/14643729214028.jpg'
 })
 
+productDetailCLose.addEventListener('click', productDetailClosed)
 
+function productDetailClosed(){
+    productDetailContainer.classList.add('inactive')
+}
+
+function openProductDetail(){
+    const isMenuCarritoClose = menuCarrito.classList.contains('inactive')
+    const isMenuMobileClose =  mobileMenu.classList.contains('inactive')
+
+    if (!isMenuCarritoClose || !isMenuMobileClose){
+        menuCarrito.classList.add('inactive')
+        mobileMenu.classList.add('inactive')
+        productDetailContainer.classList.remove('inactive')   
+    }else{
+        productDetailContainer.classList.remove('inactive')   
+    }
+
+}
 
 function renderProducts(array){
     for (product of array){
@@ -99,7 +125,11 @@ function renderProducts(array){
         const productImg = document.createElement('img')
         productImg.classList.add('product-card-img')
         productImg.setAttribute('src', product.image)
-    
+
+        // abrir el detalle del producto
+        productImg.addEventListener('click', openProductDetail)
+
+
         const productInfo = document.createElement('div')
         productInfo.classList.add('product-info')
     
@@ -114,6 +144,7 @@ function renderProducts(array){
         const productFigure = document.createElement('figure')
     
         const figureImg = document.createElement('img')
+       
         figureImg.setAttribute('src', './icons/bt_add_to_cart.svg')
     
     
